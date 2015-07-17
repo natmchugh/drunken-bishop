@@ -1,11 +1,13 @@
 
 class Atrium(object):
 
-    def __init__(self, bishop):
+    def __init__(self, bishop, key_type, hashtype):
 
         self.bishop = bishop
         self.counts = [0] * 153
         self.counts[76] = 15
+        self.key_type = key_type
+        self.hashtype = hashtype
 
 
     def move(self, step):
@@ -39,7 +41,8 @@ class Atrium(object):
             }.get(count)
 
     def __str__(self):
-        output = '+---[RSA 2048]----+\n'
+        keytype = '['+self.key_type+']-'
+        output = '+'+keytype.center(17, '-')+'+\n'
         for idx, val in enumerate(self.counts):
             coin = self.coin(val)
             if idx % 17 == 0:
@@ -47,5 +50,6 @@ class Atrium(object):
             output += coin
             if (idx+1) % 17 == 0:
                 output += '|\n'
-        output += '+------[MD5]------+'
+        hashtype = '['+self.hashtype+']'
+        output += '+'+hashtype.center(17, '-')+'+'
         return output

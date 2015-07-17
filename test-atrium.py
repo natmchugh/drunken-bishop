@@ -36,20 +36,20 @@ class TestAtrium(unittest.TestCase):
 
     def test_print_start(self):
         peter = Bishop(76);
-        atrium = Atrium(peter);
+        atrium = Atrium(peter, 'RSA 2048', 'MD5');
         emptyAtrium = open('blank_atrium.txt', 'r').read()
         self.assertEqual(str(atrium), emptyAtrium)
 
     def test_print_single_move(self):
         peter = Bishop(76);
-        atrium = Atrium(peter);
+        atrium = Atrium(peter, 'RSA 2048', 'MD5');
         atrium.move(0)
         dottyAtrium = open('atrium_single_move.txt', 'r').read()
         self.assertEqual(str(atrium), dottyAtrium)
 
     def test_print_repeated_move(self):
         peter = Bishop(76);
-        atrium = Atrium(peter);
+        atrium = Atrium(peter, 'RSA 2048', 'MD5');
         atrium.move(0)
         atrium.move(3)
         atrium.move(0)

@@ -17,7 +17,7 @@ A python tool to generate those funny images ssh generates when you connect to a
 +----[SHA256]-----+
 ```
 
-The algrithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where the follwing paragraph is quoted.
+The algorithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where the follwing paragraph is quoted.
 
 ```
 Bishop Peter finds himself in the middle of an ambient atrium. There
@@ -32,6 +32,37 @@ the floor, to remember that he has been there before. After 64 steps,
 just when no coins are left, Peter suddenly wakes up. What a strange
 dream!
 ```
+
+Example Usage
+-------------
+```
+$ python drunken-bishop.py -M ~/.ssh/id_rsa.pub
++------[RSA]------+
+|                 |
+|                 |
+|          .      |
+|         . .     |
+|    .  oS o      |
+| . . o+o . o     |
+|o o .o=    .o    |
+| + ooo .  E  .   |
+|..=o .. .. o     |
++------[MD5]------+
+
+$ python drunken-bishop.py ~/.ssh/id_ecdsa.pub
++---[ECDSA 256]---+
+|        o.=o o   |
+|       *.*.o* .  |
+|      + ==oB.o ..|
+|     o  ..B.= ..o|
+|    + . S..*... .|
+|   . +    ..=o   |
+|      o    o.o.  |
+| E . . ..  .+    |
+|  ..o  ....  o   |
++-----[SHA256]----+
+```
+
 
 How useful is this
 ------------------

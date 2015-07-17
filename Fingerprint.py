@@ -3,12 +3,11 @@ from Bishop import Bishop
 
 class Fingerprint(object):
 
-    def __init__(self, hash):
+    def __init__(self, hash, key_type, hashtype):
         bishop = Bishop(76)
-        self.atrium = Atrium(bishop)
+        self.atrium = Atrium(bishop, key_type, hashtype)
         moves = self.hash_to_moves(hash)
         lastmove = moves.pop()
-        print len(moves)
         for move in moves:
             self.atrium.move(move)
         self.atrium.finalise(lastmove)
