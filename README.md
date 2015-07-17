@@ -33,7 +33,8 @@ just when no coins are left, Peter suddenly wakes up. What a strange
 dream!
 ```
 
-* How useful is this?
+How useful is this
+------------------
 The images are pretty much useless. I have never known anyone who looks at them.
 
 
