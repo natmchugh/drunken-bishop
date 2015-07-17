@@ -1,8 +1,9 @@
 Drunken Bishop
 ==============
 
-A python tool to generate those funny images ssh generates when you connect to a new server or generate a new key.
+A python tool to generate those funny images ssh generates when you connect to a new server or generate a new key. They are meant to give you a more visual representaion of a hash value.
 
+```
 +---[ECDSA 256]---+
 |        o.=o o   |
 |       *.*.o* .  |
@@ -14,8 +15,9 @@ A python tool to generate those funny images ssh generates when you connect to a
 | E . . ..  .+    |
 |  ..o  ....  o   |
 +----[SHA256]-----+
+```
 
-
+The algrithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where the follwing paragraph is quoted.
 
 ```
 Bishop Peter finds himself in the middle of an ambient atrium. There
@@ -31,7 +33,8 @@ just when no coins are left, Peter suddenly wakes up. What a strange
 dream!
 ```
 
-The algrithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where that paragraph is quoted.
+* How useful is this?
+The images are pretty much useless. I have never known anyone who looks at them.
 
 
 
