@@ -1,6 +1,7 @@
 import base64
 import hashlib
 import string
+import math
 import argparse, sys
 
 from Fingerprint import Fingerprint
@@ -13,14 +14,18 @@ def get_key_typestring(key_type):
         'ecdsa-sha2-nistp256': 'ECDSA 256',
     }.get(key_type)
 
-def get_key_length(keyraw):
+def get_rsa_key_length(keyraw):
     keyHex = keyraw.encode('hex')
-    typeLength = int(keyHex[0:8], 16)
-    type = keyraw[4:typeLength+4]
-
-    lengthExponent = int(keyHex[8+typeLength*2:16+typeLength*2], 16)
-
-    lengthKey = int(keyHex[8+typeLength*2+lengthExponent*2:16+lengthExponent*2+typeLength*2], 16)
+    start = 8
+    typeLength = int(keyHex[0:start], 16)
+    start += typeLength*2
+    lengthExponent = int(keyHex[start:start+8], 16)
+    start += 8+2*lengthExponent;
+    lengthKey = int(keyHex[start:start+8], 16)
+    start +=8
+    key =keyHex[start: start + 2* lengthKey]
+    n = int(key, 16)
+    return int(math.log(n, 2)) + 1
 
 
 def main(argv):
@@ -33,14 +38,18 @@ def main(argv):
     args = parser.parse_args()
     (key_type, keyencoded, _) = args.filehandle.read().split(' ', 2)
     key = base64.decodestring(keyencoded)
-    get_key_length(key)
 
     hexstring = {
         'SHA256': hashlib.sha256(key).hexdigest(),
         'MD5': hashlib.md5(key).hexdigest()
     }[args.hash]
+
+    print base64.encodestring(hashlib.sha256(key).digest())
     hash_values = [int(hexstring[i:i+8], 16) for i in range(0,len(hexstring), 8)]
-    print Fingerprint(hash_values, get_key_typestring(key_type), args.hash)
+    key_description = get_key_typestring(key_type)
+    if 'ssh-rsa' == key_type:
+        key_description += " %s" % get_rsa_key_length(key)
+    print Fingerprint(hash_values, key_description, args.hash)
 
 
 if __name__ == "__main__":

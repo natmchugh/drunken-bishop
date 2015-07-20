@@ -55,9 +55,9 @@ class Bishop(object):
                 2: -16,
                 3: -17
             }.get(step, 0)
-        if 'd' == squareType and step == 3:
+        if 'd' == squareType:
             w = {
-                1: 1,
+                1: -1,
                 2: -17,
                 3: -18
             }.get(step, 0)

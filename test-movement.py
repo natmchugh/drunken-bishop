@@ -47,5 +47,11 @@ class TestMovement(unittest.TestCase):
       peter.move(3)
       self.assertEqual(peter.location(), 145)
 
+  def test_hits_corner(self):
+      peter = Bishop(152);
+      peter.move(1)
+      self.assertEqual(peter.location(), 135)
+
+
 if __name__ == '__main__':
     unittest.main()
