@@ -17,7 +17,7 @@ A python tool to generate those funny images ssh generates when you connect to a
 +----[SHA256]-----+
 ```
 
-The algorithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where the follwing paragraph is quoted.
+The algorithm is best described here http://dirk-loss.de/sshvis/drunken_bishop.pdf from where the following paragraph is quoted.
 
 ```
 Bishop Peter finds himself in the middle of an ambient atrium. There
